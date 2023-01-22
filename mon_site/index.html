@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+    <p class="phrase , disparition">Hey je n'existe plus</p>
+    <div class="haut"></div>
+    <div class="bas"></div>
+
+    <script>
+                                                        //Ici on va d'abord remove une class et changer l'HTML
+      const texte = document.querySelector(".phrase")   //on selectionne donc le p avec la class .phrase
+      texte.classList.remove("disparition")             //on lui enleve la class .disparition
+      texte.innerHTML = "Hey j'existe"                  //et on modifie son texte par "Hey j'existe" a la place de "Hey je n'existe plus"
+
+                                                              //On va ensuite creer une animation pour changer les couleurs des cubes
+      const couleur = ["red", "blue", "darkorange", "grey"]   //Pour cela on appel d'abord une constante avec les deux couleurs souhaitee
+      let nombre = 0                                          //ainsi qu'une variable qui va nous servir a changer de couleur a chaque fois qu'on passera la souris dessus
+
+      const cubes = document.querySelectorAll(".haut, .bas")  //on selectionne nos deux cubes
+
+      cubes.forEach(cube => {                                 //on creer un boucle avec for each pour que nos cubes changent separement de couleurs
+        cube.addEventListener("mouseover", (event) => {       //on ajoute l'eventListener pour que le code s'active a chaue fois que la souris passe sur un cube
+          cube.style.backgroundColor = couleur[nombre]        //ici on change la couleur du cube en la couleur qui est a la position 'nombre' de la constante couleur
+          nombre = (nombre+1)%4                               //ici on change nombre pour que la couleur change a chaque fois donc on fait en sort que lorsqu'on atteind 3 on retourne a 0
+        })
+      })
+
+    </script>
+  </body>
+</html>
